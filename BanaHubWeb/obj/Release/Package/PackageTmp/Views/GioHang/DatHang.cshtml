@@ -1,0 +1,104 @@
+﻿@using BanaHubWeb.Models;
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/Shared/_BanaHubMainLayout.cshtml";
+}
+
+@{
+    KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+}
+
+<div class="container-fluid container-center" style="margin-top: 3rem;">
+    <div class="sub-container" style="width: 80%;">
+        @using (Html.BeginForm())
+        {
+        <div class="row">
+            <div class="col-lg-7 col-md-12">
+                <h5 class="text-uppercase">thông tin thanh toán</h5>
+
+                
+                <div class="form-group">
+                    <label for="HoTen">Tên</label>
+                    <input class="form-control" type="text" placeholder="Họ và tên" value="@kh.TenKH">
+                </div>
+                <div class="form-group">
+                    <label for="DiaChi">Địa chỉ</label>
+                    <input class="form-control" name="DiaChi" type="text" value="@ViewBag.DiaChi" placeholder="Địa chỉ" required>
+                </div>
+                <div class="form-group">
+                    <label for="City">Tỉnh / Thành phố</label>
+                    <input class="form-control" name="Tinh" type="text" value="@ViewBag.Tinh" placeholder="Tỉnh / Thành phố" required>
+                </div>
+                <div class="form-group">
+                    <label for="Sdt">Số điện thoại</label>
+                    <input class="form-control" name="SDT" type="text" value="@ViewBag.SDT" placeholder="Số điện thoại" required>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Địa chỉ Email</label>
+                    <input class="form-control" name="email" type="email" value="@kh.Email">
+                </div>
+                <div class="form-group text-center">
+                    <a class="btn btn-outline-danger" href="@Url.Action("DangXuat", "User")">Hoặc đăng nhập bằng tài khoản khác</a>
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-12">
+                <div class="item-detail" style="border: 2px solid #e1a452; padding: 25px;">
+                    <h5 class="text-uppercase text-center">đơn hàng của bạn</h5>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr style="border-bottom: 3px solid rgba(187, 187, 187, .3);">
+                                <td>SẢN PHẨM</td>
+                                <td class="text-right">TỔNG</td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="table">
+                        
+                        <tbody>
+                            <tr>
+                                @foreach (var item in Model)
+                                {
+                                    <div class="d-flex justify-content-between" style="border-bottom: 1px solid rgb(201, 201, 201); padding-top: 15px;">
+                                        <p>@item.sTenSP x @item.iSoLuong</p>
+                                        <p style="color: #be9329; font-weight: 600;">@string.Format("{0:##,##0,0}", @item.dThanhTien) đ</p>
+                                    </div>
+                                }
+
+                            </tr>
+                            @Html.ValidationSummary(true)
+                            <tr>
+                                <div class="d-flex justify-content-between align-items-center" style="border-bottom: 1px solid rgb(201, 201, 201); padding: 10px 0;">
+                                    <p style="margin-bottom: 0;">Tổng phụ</p>
+                                    <p style="margin-bottom: 0; color: #be9329; font-weight: 600;">@string.Format("{0:##,##0,0}", @ViewBag.TongTien) đ</p>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="d-flex justify-content-between align-items-center" style="border-bottom: 1px solid rgb(201, 201, 201); padding: 10px 0;">
+                                    <p style="margin-bottom: 0;">Giao hàng</p>
+                                    <p class="text-right" style="margin-bottom: 0; font-weight: 600; font-size: .9em; color: rgb(114, 114, 114);">Giao hàng miễn phí<br>Nhận hàng, thanh toán tại nhà</p>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="d-flex justify-content-between align-items-center" style="border-bottom: 3px solid rgba(187, 187, 187, .3); padding: 10px 0;">
+                                    <p style="margin-bottom: 0;">Tổng</p>
+                                    <p style="margin-bottom: 0; color: #be9329; font-weight: 600;">@string.Format("{0:##,##0,0}", @ViewBag.TongTien) đ</p>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="text-center" style="margin-top: 20px;">
+                                    <button class="btn btn-danger" type="submit">ĐẶT HÀNG</button>
+                                </div>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+

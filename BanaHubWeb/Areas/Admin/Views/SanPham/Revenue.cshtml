@@ -1,0 +1,102 @@
+﻿@model IEnumerable<BanaHubWeb.Models.Order>
+
+@{
+    ViewBag.Title = "Revenue";
+    Layout = "~/Areas/Admin/Views/Shared/_BanaHubAdminLayout.cshtml";
+}
+
+<div id="layoutSidenav_content">
+    <div class="container-fluid container-center" style="margin-top: 2rem; position:relative">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="sub-container" style="width:70%; position:absolute; top:0; right:0; transform:translate(-18%,10%)">
+                    <div class="row text-center">
+                        <div class="col-md-6 col-sm-11 col-lg-6">
+                            <div class="section-box rounded shadow"
+                                 style="background-color:rgb(255,255,255);padding:30px 20px 30px 20px;margin:-30px 0px 0px 0px; max-width: 370px;">
+                                <div class="icon-box featured-box icon-box-center text-center">
+                                    <div class="icon-center" style="margin-bottom:10px"><i class="fas fa-money-bill-wave" style="font-size:3em; color:#be9329"></i></div>
+                                    <div class="icon-box-text">
+                                        <h4 class="text-uppercase">Tổng doanh thu</h4>
+                                        <p class="changecontent">
+                                            @Html.FormatValue(ViewBag.TotalMoney, "{0:##,##0}") đ
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-11 col-lg-6">
+                            <div class="section-box rounded shadow"
+                                 style="background-color:rgb(255,255,255);padding:30px 20px 30px 20px;margin:-30px 0px 0px 0px; max-width: 370px;">
+                                <div class="icon-box featured-box icon-box-center text-center">
+                                    <div class="icon-center" style="margin-bottom:10px"><i class="fab fa-algolia" style="font-size:3em; color:#be9329"></i></div>
+                                    <div class="icon-box-text">
+                                        <h4 class="text-uppercase">Số lượt truy cập</h4>
+                                        <p class="changecontent">
+                                            @ApplicationInstance.Application["HitCounter"]
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center" style="margin-top:5rem">
+                        <div class="col-md-6 col-sm-11 col-lg-6">
+                            <div class="section-box rounded shadow"
+                                 style="background-color:rgb(255,255,255);padding:30px 20px 30px 20px;margin:-30px 0px 0px 0px; max-width: 370px;">
+                                <div class="icon-box featured-box icon-box-center text-center">
+                                    <div class="icon-center" style="margin-bottom:10px"><i class="fas fa-file-invoice" style="font-size:3em; color:#be9329"></i></div>
+                                    <div class="icon-box-text">
+                                        <h4 class="text-uppercase">tổng đơn hàng</h4>
+                                        <p class="changecontent">
+                                            @ViewBag.TotalBill
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-11 col-lg-6">
+                            <div class="section-box rounded shadow"
+                                 style="background-color:rgb(255,255,255);padding:30px 20px 30px 20px;margin:-30px 0px 0px 0px; max-width: 370px;">
+                                <div class="icon-box featured-box icon-box-center text-center">
+                                    <div class="icon-center" style="margin-bottom:10px"><i class="fas fa-umbrella" style="font-size:3em; color:#be9329"></i></div>
+                                    <div class="icon-box-text">
+                                        <h4 class="text-uppercase">tổng sản phẩm bán ra</h4>
+                                        <p class="changecontent">
+                                            @ViewBag.TotalNum
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .section-box {
+        transition: .3s;
+        cursor: pointer;
+        margin: 0 10px 10px 0;
+        margin-bottom: 15px;
+    }
+
+        .section-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+        }
+
+            .section-box:hover svg {
+                color: #be9329;
+            }
+
+    .changecontent {
+        margin-top: 20px;
+        color: #be9329;
+        font-weight: bold;
+        font-size: 1.3em;
+    }
+</style>

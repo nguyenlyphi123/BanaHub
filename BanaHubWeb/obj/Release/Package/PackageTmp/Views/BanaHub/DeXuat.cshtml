@@ -1,0 +1,15 @@
+﻿
+
+@foreach (var sp in Model)
+{
+    <a href="@Url.Action("ChiTietSanPham", "SanPhamDetail", new { id = sp.MaSP, maloai = sp.MaLoai})" class="list-group-item list-group-item-action item-link">
+        <div class="sub-item text-center d-flex flex-row">
+            <img src="~/Images/@sp.AnhBia" alt="" style="width: 100px; height: 100px;">
+            <div class="item-context">
+                <p class="text-uppercase" style="font-weight: 500; margin-bottom: 0 !important;">@sp.TenSP</p>
+                <p>@string.Format("{0:##,##0,0}", sp.GiaBan) đ</p>
+            </div>
+        </div>
+    </a>
+}
+

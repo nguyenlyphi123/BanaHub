@@ -1,0 +1,53 @@
+﻿@model PagedList.PagedList<BanaHubWeb.Models.SANPHAM>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "XuLyPartial";
+    Layout = "~/Views/Shared/_BanaHubLayout.cshtml";
+}
+
+
+<div class="container text-md-right text-sm-center" style="margin-bottom: 1rem; padding-right: 4rem;">
+    <div class="btn-group">
+        <button type="button" data-toggle="dropdown" class="btn btn-outline-warning dropdown-toggle">Sắp xếp theo</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="~/Filter/Filter?id=@Request.QueryString["id"]&fil=a-z">A - Z</a>
+            <a class="dropdown-item" href="~/Filter/Filter?id=@Request.QueryString["id"]&fil=price-asc">Giá <i class="fas fa-long-arrow-alt-up" style="margin-left:5px"></i></a>
+            <a class="dropdown-item" href="~/Filter/Filter?id=@Request.QueryString["id"]&fil=price-desc">Giá <i class="fas fa-long-arrow-alt-down" style="margin-left:5px"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3" style="margin-bottom: 2rem">
+            <a href="@Url.Action("ChiTietSanPham", "SanPhamDetail", new { id = item.MaSP, maloai = item.MaLoai})" class="item-link d-flex justify-content-center">
+                <div class="card"
+                     style="max-width: 216px; height: 310px; border: none !important;">
+                    <img class="card-img-top" src="~/Images/@item.AnhBia" alt="">
+                    <div class="card-body">
+                        <h6 class="card-title text-uppercase">@item.TenSP</h6>
+                        <p class="card-text" style="color:#be9329">@string.Format("{0:##,##0,0}", item.GiaBan) đ</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+<div class="menuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("XuLyPartial", "SanPhamDetail", new { id = ViewBag.MaLoai, page = page }))
+</div>
+
+<style>
+    .item-link {
+        color: #202020 !important;
+    }
+
+        .item-link:hover {
+            color: #be9329 !important;
+            text-decoration: none;
+        }
+</style>
+

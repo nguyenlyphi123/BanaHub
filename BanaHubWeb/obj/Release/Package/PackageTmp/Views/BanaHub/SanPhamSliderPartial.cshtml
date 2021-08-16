@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BanaHubWeb.Models.LOAI>
+
+@*@foreach (var item in Model)
+{
+    if (item.MaLoai == 1)
+    {
+        <div class="carousel-item active">
+                <div class="row">
+                    @Html.Action("PhuKienSliderPartial", "BaNaHub", new { id = item.MaLoai })
+                </div>
+            </div>
+        <<div class="carousel-item active">
+            <div class="row">
+                @Html.Action("BanChay", "BanaHub")
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="carousel-item ">
+            <div class="row">
+                @Html.Action("PhuKienSliderPartial", "BanaHub", new { id = item.MaLoai })
+            </div>
+        </div>
+    }
+
+}*@
+<div class="carousel-item active">
+    <div class="row">
+        @Html.Action("BanChay", "BanaHub")
+    </div>
+</div>
+
+<div class="carousel-item">
+    <div class="row">
+        @Html.Action("NoiBat", "BanaHub")
+    </div>
+</div>
+
+<div class="carousel-item">
+    <div class="row">
+        @Html.Action("GiaTot", "BanaHub")
+    </div>
+</div>
+
+
+

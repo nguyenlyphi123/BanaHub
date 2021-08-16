@@ -1,0 +1,44 @@
+﻿@model BanaHubWeb.Models.LOAI
+
+@{
+    ViewBag.Title = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_BanaHubAdminLayout.cshtml";
+}
+
+<div id="layoutSidenav_content">
+    <div class="container-fluid container-center" style="margin-top: 2rem;">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="sub-container">
+                    <h2 class="text-center">Thêm loại sản phẩm</h2>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+               
+                            <div class="form-group" style="margin-bottom:1rem">
+                                <div class="row">
+                                    <label class="control-label col-md-2">Tên loại</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" type="text" name="sTenLoai" value="" required style="max-width:900px"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="d-flex justify-content-center">
+                                    <input style="padding: .5rem 3rem" type="submit" size="70" value="Thêm mới" class="btn btn-outline-danger" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div>
+                        @Html.ActionLink("Về trang quản lý", "Index", "SanPham")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

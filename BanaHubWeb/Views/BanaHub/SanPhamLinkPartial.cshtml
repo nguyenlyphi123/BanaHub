@@ -1,0 +1,15 @@
+﻿@model IEnumerable<BanaHubWeb.Models.LOAI>
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" href="#">Sản phẩm</a>
+    <div class="dropdown-menu">
+        @foreach (var item in Model)
+        {
+            @*<a class="dropdown-item" href="@Url.Action("XuLyPartial", "SanPhamDetail", new { id = item.MaLoai})">@item.TenLoai</a>*@
+            <a href="~/SanPhamDetail/XuLyPartial?id=@item.MaLoai" class="list-group-item list-group-item-action" style="border:none">@item.TenLoai</a>
+
+        }
+
+    </div>
+</li>

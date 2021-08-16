@@ -1,0 +1,14 @@
+﻿@model IEnumerable<BanaHubWeb.Models.KHUYENMAI>
+
+@foreach (var km in Model)
+{
+    <a href="@Url.Action("ChiTietSanPham", "SanPhamDetail", new { id = km.MaSp, maloai = km.MaLoai})" class="item-link">
+        <div class="sub-item text-center d-flex flex-row">
+            <img src="~/Images/@km.Anhbia" alt="" style="width: 100px; height: 100px;">
+            <div class="item-context">
+                <p class="text-uppercase" style="font-weight: 500; margin-bottom: 0 !important;">@km.TenSp</p>
+                <p style="color:#be9329">@string.Format("{0:#,##0,0}", km.Giaban) đ</p>
+            </div>
+        </div>
+    </a>
+}

@@ -1,0 +1,92 @@
+﻿@model PagedList.PagedList<BanaHubWeb.Models.ThongTinThanhToan>
+@using PagedList.Mvc;
+@using BanaHubWeb.Models;
+
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Areas/Admin/Views/Shared/_BanaHubAdminLayout.cshtml";
+}
+
+
+<div id="layoutSidenav_content">
+    <div class="container-fluid container-center" style="margin-top: 2rem;">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="sub-container">
+                    <h2 class="text-center">THÔNG TIN KHÁCH HÀNG</h2>
+                    <div class="d-flex justify-content-end" style="padding-right:1rem; margin-bottom:1rem;">
+                        @*<a class="btn btn-outline-warning" href="@Url.Action("Create", "SanPham")">Thêm mới</a>*@
+
+                        @using (Html.BeginForm("Customer", "SanPham"))
+                        {
+                            <div class="d-flex">
+                                <input class="form-control mr-sm-2" type="text" name="strSearch" value="@ViewBag.Search" style="width:200px">
+                                <button class="btn btn-dark" type="submit">Search</button>
+                            </div>
+                        }
+                    </div>
+
+                    <table class="table">
+                        <tr>
+                            <th style="width:70px;">
+                                Mã KH
+                            </th>
+                            <th>
+                                Tên KH
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Password
+                            </th>
+                            <th>
+                                Địa chỉ
+                            </th>
+                            <th>
+                                Tỉnh / Thành phố
+                            </th>
+                            <th>
+                                Số điện thoại
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Password)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.City)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                </td>
+
+                            </tr>
+                        }
+
+                    </table>
+
+
+                    <div class="menuTrang">
+                        @Html.PagedListPager(Model, page => Url.Action("Customer", new { page = page }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

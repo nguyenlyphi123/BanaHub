@@ -1,0 +1,23 @@
+﻿@using BanaHubWeb.Models;
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "XacNhanDatHang";
+    Layout = "~/Views/Shared/_BanaHubMainLayout.cshtml";
+}
+
+
+<div class="container-fluid container-center" style="margin-top: 3rem; height: 315px;">
+    <div class="sub-container d-flex justify-content-center" style="width: 60%;">
+        <div class="glassy shadow" style="width:60%; padding: 30px 15px;">
+            <p class="text-center" style="font-weight: 600; color: #e1a452;">Cảm ơn đã đặt hàng. Đơn hàng của bạn đã được xác nhận</p>
+            @*<ul>
+                <li>Mã đơn hàng: @ctdh.MaDonHang</li>
+                <li>Ngày: @DateTime.Now.ToShortDateString()</li>
+                <li>Tổng cộng: @ctdh.DonGia đ</li>
+                <li>Phương thức thanh toán: Trả tiền khi nhận hàng</li>
+            </ul>*@
+        </div>
+    </div>
+</div>
+

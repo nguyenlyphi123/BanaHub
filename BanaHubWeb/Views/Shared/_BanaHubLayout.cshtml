@@ -1,0 +1,58 @@
+﻿@using BanaHubWeb.Models
+
+@{
+    ViewBag.Title = "_BanaHubLayout";
+    Layout = "~/Views/Shared/_BanaHubMainLayout.cshtml";
+}
+
+
+<style>
+    .item-link {
+        color: #202020 !important;
+    }
+
+        .item-link:hover {
+            color: #be9329 !important;
+            text-decoration: none;
+        }
+
+    .list-border {
+        font-size: 13px;
+        color: #9c9c9c;
+        border: none !important;
+        border-right: 1px solid #9c9c9c !important;
+        padding: 0 10px !important;
+    }
+</style>
+
+<!--section-->
+<div class="container-fluid" style="margin-top:3rem">
+    <div class="row">
+        <div class="col-lg-3 d-none d-md-block">
+            @Html.Action("SanPhamLinkPartial", "SanPhamDetail")
+            <div class="list-group" style="margin-top: 2rem;">
+                <h5 class="text-center" style="color: #be9329; font-weight: 500;">SẢN PHẨM LIÊN QUAN</h5>
+                <div class="list-item">
+                        @Html.Action("DeXuat", "BanaHub", new { id = ViewBag.MaLoai})
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-9">
+            @*<div class="container text-md-right text-sm-center" style="margin-bottom: 1rem; padding-right: 4rem;">
+                <div class="btn-group">
+                    <button type="button" data-toggle="dropdown" class="btn btn-outline-warning dropdown-toggle">Sắp xếp theo</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="~/Filter/Filter?id=@Request.QueryString["id"]&fil=a-z">A - Z</a>
+                        <a class="dropdown-item" href="~/Filter/Filter?id=@Request.QueryString["id"]&fil=price-asc">Giá <i class="fas fa-long-arrow-alt-up" style="margin-left:5px"></i></a>
+                        <a class="dropdown-item" href="~/Filter/Filter?id=@Request.QueryString["id"]&fil=price-desc">Giá <i class="fas fa-long-arrow-alt-down" style="margin-left:5px"></i></a>
+                    </div>
+                </div>
+            </div>*@
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+
+

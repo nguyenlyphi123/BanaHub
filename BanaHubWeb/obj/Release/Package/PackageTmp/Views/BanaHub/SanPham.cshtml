@@ -1,0 +1,68 @@
+﻿@model PagedList.PagedList<BanaHubWeb.Models.SANPHAM>
+@using BanaHubWeb.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_BanaHubMainLayout.cshtml";
+}
+
+<div class="container-fluid" style="margin-top:3rem">
+    <div class="row">
+        <div class="col-lg-3 d-none d-md-block">
+            @*<div class="list-group">
+                    <h5 class="text-center" style="color: #be9329; font-weight: 500;">DANH MỤC SẢN PHẨM</h5>
+                    <a href="" class="list-group-item list-group-item-action">Vi xử lý</a>
+                    <a href="" class="list-group-item list-group-item-action">Case</a>
+                    <a href="" class="list-group-item list-group-item-action">Phụ kiện</a>
+
+                </div>*@
+            @Html.Action("SanPhamLinkPartial", "SanPhamDetail")
+            <div class="list-group" style="margin-top: 2rem;">
+                <h5 class="text-center" style="color: #be9329; font-weight: 500;">SẢN PHẨM</h5>
+                <div class="list-item">
+                    @Html.Action("DeXuat", new { id = 1 });
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-lg-9">
+            <div class="col-md-12 col-lg-12">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3" style="margin-bottom: 2rem">
+                            <a href="@Url.Action("ChiTietSanPham", "SanPhamDetail", new { id = item.MaSP, maloai = item.MaLoai})" class="item-link">
+                                <div class="card"
+                                     style="max-width: 216px; height: 310px; border: none !important;">
+                                    <img class="card-img-top" src="~/Images/@item.AnhBia" alt="">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-uppercase">@item.TenSP</h6>
+                                        <p class="card-text" style="color:#be9329">@string.Format("{0:##,##0,0}", item.GiaBan) đ</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="menuTrang">
+                @Html.PagedListPager(Model, page => Url.Action("SanPham", "BanaHub", new { page = page }))
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+<style>
+    .item-link {
+        color: #202020 !important;
+    }
+
+        .item-link:hover {
+            color: #be9329 !important;
+            text-decoration: none;
+        }
+</style>

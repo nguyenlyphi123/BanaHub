@@ -1,0 +1,45 @@
+﻿@model PagedList.PagedList<BanaHubWeb.Models.LOAI>
+
+@{
+    ViewBag.Title = "TypeOfProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_BanaHubAdminLayout.cshtml";
+}
+
+<div id="layoutSidenav_content">
+    <div class="container-fluid container-center" style="margin-top: 2rem;">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="sub-container">
+                    <h2 class="text-center">THÔNG TIN LOẠI SẢN PHẨM</h2>
+                    <a class="btn btn-outline-warning" href="@Url.Action("CreateProduct", "SanPham")">Thêm mới</a>
+
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Mã loại
+                            </th>
+                            <th>
+                                Tên loại
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr style="width:10%">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaLoai)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenLoai)
+                                </td>
+                                <td width="60px">
+                                    <a href="@Url.Action("EditProduct", new { id = item.MaLoai})" class="btn btn-warning" role="button">Sửa</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

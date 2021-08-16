@@ -1,0 +1,110 @@
+﻿@model PagedList.PagedList<BanaHubWeb.Models.SANPHAM>
+@using PagedList.Mvc;
+
+
+
+@helper Truncate(string s, int lenght)
+{
+    if (s.Length < lenght)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, lenght)<text>...</text>
+    }
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_BanaHubAdminLayout.cshtml";
+}
+<div id="layoutSidenav_content">
+    <div class="container-fluid container-center" style="margin-top: 2rem;">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="sub-container">
+                    <h2 class="text-center">QUẢN LÝ SẢN PHẨM</h2>
+                    <div class="d-flex justify-content-between" style="padding-right:2rem">
+                        <a class="btn btn-outline-warning" href="@Url.Action("Create", "SanPham")">Thêm mới</a>
+                        @using (Html.BeginForm("Index", "SanPham"))
+                        {
+                            <div class="d-flex" action="/action_page.php">
+                                <input class="form-control mr-sm-2" type="text" name="strSearch" value="@ViewBag.Search" style="width:200px">
+                                <button class="btn btn-dark" type="submit">Search</button>
+                            </div>
+                        }
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th style="text-align:center; width:20px;">
+                                Mã SP
+                            </th>
+                            <th style="text-align:center; width:200px;">
+                                Tên sản phẩm
+                            </th>
+                            <th style="text-align:center; width:250px;">
+                                Mô tả
+                            </th>
+                            <th style="text-align:center; width:80px;">
+                                Ảnh bìa
+                            </th>
+                            <th style="text-align:center; width:80px;">
+                                Số lượng
+                            </th>
+                            <th style="text-align:center; width:80px;">
+                                Còn lại
+                            </th>
+                            <th style="text-align:center; width:120px;">
+                                Giá bán
+                            </th>
+                            <th style="text-align:center; width:100px;">
+                                Loại
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaSP)
+                                </td>
+                                <td>
+                                    @Truncate(item.TenSP, 50)
+                                </td>
+                                <td>
+                                    @Html.Raw(Truncate(item.MoTa, 70).ToString())
+                                </td>
+                                <td>
+                                    <img src="~/Images/@item.AnhBia" alt="Alternate Text" style="width:70px" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoLuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoLuongBan)
+                                </td>
+                                <td style="color: #be9329">
+                                    @Html.FormatValue(item.GiaBan, "{0:##,##0}") đ
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LOAI.TenLoai)
+                                </td>
+                                <td style="width:120px">
+                                    <a href="@Url.Action("Edit", new { id = item.MaSP})" class="btn btn-warning" role="button">Sửa</a>
+                                    <a href="@Url.Action("Delete", new { id = item.MaSP})" class="btn btn-danger" role="button">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+
+                    <div class="menuTrang">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

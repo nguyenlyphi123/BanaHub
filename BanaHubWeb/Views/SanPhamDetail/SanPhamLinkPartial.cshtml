@@ -1,0 +1,12 @@
+﻿@model IEnumerable<BanaHubWeb.Models.LOAI>
+
+
+<div class="list-group">
+    <h5 class="text-center" style="color: #be9329; font-weight: 500;">DANH MỤC SẢN PHẨM</h5>
+    @foreach (var item in Model)
+    {
+        @*<a href="@Url.Action("XuLyPartial", "SanPhamDetail", new { id = item.MaLoai})" class="list-group-item list-group-item-action">@item.TenLoai</a>*@
+        <a href="~/SanPhamDetail/XuLyPartial?id=@item.MaLoai" class="list-group-item list-group-item-action">@item.TenLoai</a>
+    }
+</div>
+

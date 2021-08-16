@@ -1,0 +1,20 @@
+﻿@model IEnumerable<BanaHubWeb.Models.SANPHAM>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-3">
+        <a href="@Url.Action("ChiTietSanPham", "SanPhamDetail", new { id = item.MaSP, maloai = item.MaLoai})" class="item-link">
+            <div class="card"
+                 style="max-width: 216px; height: 310px; border: none !important;">
+                <img class="card-img-top" src="~/Images/@item.AnhBia" alt="">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase">@item.TenSP</h6>
+                    <p class="card-text" style="color:#be9329">@string.Format("{0:#,##0,0}", item.GiaBan) đ</p>
+                </div>
+            </div>
+        </a>
+
+    </div>
+}
+
+

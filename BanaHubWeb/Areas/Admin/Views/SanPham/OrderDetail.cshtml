@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BanaHubWeb.Models.OrderDetail>
+
+
+
+@{
+    ViewBag.Title = "OrderDetail";
+    Layout = "~/Areas/Admin/Views/Shared/_BanaHubAdminLayout.cshtml";
+}
+
+<div id="layoutSidenav_content">
+    <div class="container-fluid container-center" style="margin-top: 2rem;">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="sub-container">
+                    <h2 class="text-center">Chi tiết đơn hàng</h2>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Mã đơn hàng
+                            </th>
+                            <th>
+                                Tên khách hàng
+                            </th>
+                            <th>
+                                Tên sản phẩm
+                            </th>
+                            <th>
+                                Số lượng
+                            </th>
+                            <th>
+                                Đơn giá
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.cusName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.proName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.proNum)
+                                </td>
+                                <td style="color: #be9329">
+                                    @Html.FormatValue(item.Price, "{0:##,##0}") đ
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    @Html.ActionLink("Trở về bảng Order", "Order")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

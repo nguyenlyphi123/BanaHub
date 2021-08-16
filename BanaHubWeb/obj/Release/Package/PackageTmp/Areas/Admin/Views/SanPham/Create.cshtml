@@ -1,0 +1,121 @@
+﻿@model BanaHubWeb.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_BanaHubAdminLayout.cshtml";
+}
+
+<div id="layoutSidenav_content">
+    <div class="container-fluid container-center" style="margin-top: 2rem;">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="sub-container">
+                    <h2 class="text-center">Thêm mới sản phẩm</h2>
+
+                    @using (Html.BeginForm("Create", "SanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal" style="margin-top:2rem">
+                            <div class="form-group" style="margin-bottom:1rem">
+                                <div class="row">
+                                    <label class="control-label col-md-2">Tên sản phẩm</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" type="text" name="sTenSP" value="@ViewBag.TenSP" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:1rem">
+                                <div class="row">
+                                    <label class="control-label col-md-2">Mô tả</label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" name="sMoTa">@ViewBag.MoTa</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:1rem">
+                                <div class="row">
+                                    <label class="control-label col-md-2">Giá bán</label>
+                                    <div class="col-md-10">
+                                        <input class="form-contrGiaBan" value="@ViewBag.GiaBan" type="number" name="mGiaBan" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:1rem">
+                                <div class="row">
+                                    <label class="control-label col-md-2">Số lượng</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" type="number" min="1" name="iSoLuong" value="@ViewBag.SoLuong" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:1rem">
+                                <div class="row">
+                                    <label class="control-label col-md-2">Loại</label>
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("MaLoai")
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:1rem">
+                                <div class="row">
+                                    <label class="control-label col-md-2">Ảnh bìa</label>
+                                    <div class="col-md-10">
+                                        <input type="file" name="fFileUpload" />
+                                        @ViewBag.ThongBao
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:1rem">
+                                <div class="row">
+                                    <label class="control-label col-md-2">Ảnh bìa 2</label>
+                                    <div class="col-md-10">
+                                        <input type="file" name="fFileUpload2" />
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:1rem">
+                                <div class="row">
+                                    <label class="control-label col-md-2">Ảnh bìa 3</label>
+                                    <div class="col-md-10">
+                                        <input type="file" name="fFileUpload3" />
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:1rem">
+                                <div class="row">
+                                    <label class="control-label col-md-2">Ảnh bìa 4</label>
+                                    <div class="col-md-10">
+                                        <input type="file" name="fFileUpload4" />
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="d-flex justify-content-center">
+                                    <input style="padding: .5rem 3rem" type="submit" size="70" value="Thêm mới" class="btn btn-outline-danger" />
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                    <a class="btn btn-dark" href="@Url.Action("Index", "SanPham")">Về trang quản lý</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

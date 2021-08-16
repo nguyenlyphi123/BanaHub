@@ -1,0 +1,126 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "_BanaHubLayout";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-auto-a11y="true"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link href="~/Content/banahub.css" rel="stylesheet" />
+    <title>BanaHub</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="container-fluid container-center shadow-sm" style="padding:.5rem 0; background-color: #fff !important; position: sticky !important; top:0 !important; z-index: 10 !important;">
+        <div class="sub-container" style="width: 80%;">
+            <nav class="navbar navbar-expand-md bg-light navbar-light" style="background-color: #fff !important;">
+                <a href="@Url.Action("Index", "BanaHub")" class="navbar-brand" style="font-family: 'Kirang Haerang', cursive; font-size:2em; color:#be9329">BanaHub</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "BanaHub")">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Giới thiệu</a>
+                        </li>
+
+                        @Html.Action("SanPhamLinkPartial", "BanaHub")
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tin tức</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Liên hệ</a>
+                        </li>
+                    </ul>
+
+                    @using (Html.BeginForm("Search", "Seach", FormMethod.Get, new { @class = "d-flex", @role = "Search" }))
+                    {
+                        @*<p>
+                                <input type="text" name="str" value="@ViewBag.Search" placeholder="Nhập sản phẩm cần tìm" size="100" />
+                                <input type="submit" name="name" value="Tìm kiếm" />
+                            </p>*@
+                        <form class="d-flex" action="/action_page.php" style="height:38px">
+                            <input class="form-control mr-sm-2" type="text" name="str" value="@ViewBag.Search">
+                            <button class="btn btn-dark" type="submit">Search</button>
+                            @Html.Action("CartPartial", "GioHang")
+                        </form>
+                    }
+
+
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    <!--section-->
+    @RenderBody()
+
+    <!-- Footer -->
+    <div class="container-fluid container-center" style="padding:2rem; margin-top: 3rem; background-color: #be9329;">
+        <div class="sub-container" style="width: 70%;">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    <h7 class="footer-brand">Menu</h7>
+                    <div class="d-flex flex-column">
+                        <a class="footer-content" href="#">Giới thiệu</a>
+                        <a class="footer-content" href="@Url.Action("SanPham", "BanaHub")">Cửa hàng</a>
+                        <a class="footer-content" href="#">Liên hệ</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    <h7 class="footer-brand">Tài khoản</h7>
+                    <div class="d-flex flex-column">
+                        <a class="footer-content" href="#">My account</a>
+                        <a class="footer-content" href="#">Kiểm tra đơn hàng</a>
+                        <a class="footer-content" href="@Url.Action("GioHang", "GioHang")">Thanh toán</a>
+                        <a class="footer-content" href="#">Giỏ hàng</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    <h7 class="footer-brand">Dịch vụ</h7>
+                    <div class="d-flex flex-column">
+                        <a class="footer-content" href="#">Giới thiệu</a>
+                        <a class="footer-content" href="@Url.Action("SanPham", "BanaHub")">Cửa hàng</a>
+                        <a class="footer-content" href="#">Liên hệ</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    <h7 class="footer-brand">Đăng ký</h7>
+                    <p style="color: rgb(223, 223, 223); padding-bottom: .5rem;">Đăng ký để nhận được thông tin mới mấy từ chúng tôi.</p>
+                    <div class="form-group">
+                        <div class="d-flex">
+                            <input class="form-control" type="email" name="TenDN" value="" placeholder="Email..." />
+                            <a class="d-flex align-items-center email-sigup" href="@Url.Action("DangKy", "User")"><i class="fas fa-paper-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+

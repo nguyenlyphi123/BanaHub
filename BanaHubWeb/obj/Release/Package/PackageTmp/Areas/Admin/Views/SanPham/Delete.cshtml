@@ -1,0 +1,98 @@
+﻿@model BanaHubWeb.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_BanaHubAdminLayout.cshtml";
+}
+
+
+@helper Truncate(string s, int lenght)
+{
+    if (s.Length < lenght)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, lenght)<text>...</text>
+    }
+}
+
+
+<div id="layoutSidenav_content">
+    <div class="container-fluid container-center" style="margin-top: 2rem;">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="sub-container">
+                    <h3 style="color:red; margin-bottom: 2rem;">Bạn có chắc muốn xóa sản phẩm này</h3>
+                    <table class="table">
+                        <tr>
+                            <th style="text-align:center; width:20px;">
+                                Mã SP
+                            </th>
+                            <th style="text-align:center; width:200px;">
+                                Tên sản phẩm
+                            </th>
+                            <th style="text-align:center; width:250px;">
+                                Mô tả
+                            </th>
+                            <th style="text-align:center; width:80px;">
+                                Ảnh bìa
+                            </th>
+                            <th style="text-align:center; width:80px;">
+                                Số lượng
+                            </th>
+                            <th style="text-align:center; width:120px;">
+                                Giá bán
+                            </th>
+                            <th style="text-align:center; width:100px;">
+                                Loại
+                            </th>
+                            <th></th>
+                        </tr>
+
+
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.MaSP)
+                            </td>
+                            <td>
+                                @Truncate(Model.TenSP, 50)
+                            </td>
+                            <td>
+                                @Html.Raw(Truncate(Model.MoTa, 70).ToString())
+                            </td>
+                            <td>
+                                <img src="~/Images/@Model.AnhBia" alt="Alternate Text" style="width:70px" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.SoLuongBan)
+                            </td>
+                            <td style="color: #be9329">
+                                @Html.FormatValue(Model.GiaBan, "{0:#,##0}") đ
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.LOAI.TenLoai)
+                            </td>
+                        </tr>
+
+                    </table>
+                    <div class="text-center">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn btn-danger" style="padding: .4rem 2rem" /> |
+                                <a class="btn btn-outline-success" href="@Url.Action("Index", "SanPham")">Trở về giỏ hàng</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

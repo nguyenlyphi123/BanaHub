@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.5" name="BanaHub">
+  <DataContextMoniker Name="/BanaHubDataContext" />
+  <nestedChildShapes>
+    <classShape Id="461327dd-1200-47f7-8bf9-a55fad4f4e10" absoluteBounds="3.5, 6.125, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/BanaHubDataContext/DONDATHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0b3e1464-4fe8-4b3f-ad8d-05f5f9f4eaf5" absoluteBounds="3.515, 6.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4f363b09-6710-49a6-934a-08d4524fd568" absoluteBounds="0.75, 5.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BanaHubDataContext/KHACHHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9546168f-5477-46b3-ab5c-0f7d56260d3b" absoluteBounds="0.765, 5.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="023013e5-58c1-4581-b9e9-cef0d6b798e1" absoluteBounds="0.75, 1.5, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/BanaHubDataContext/LOAI" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e987728d-8a46-472d-9933-c6ab3703b0f5" absoluteBounds="0.765, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 6.53929768880208); (3.5 : 6.53929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BanaHubDataContext/KHACHHANG/KHACHHANG_DONDATHANG" />
+      <nodes>
+        <classShapeMoniker Id="4f363b09-6710-49a6-934a-08d4524fd568" />
+        <classShapeMoniker Id="461327dd-1200-47f7-8bf9-a55fad4f4e10" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="34db9c5d-7c0f-4838-bbc9-8a74ca0ed187" absoluteBounds="0.75, 3.375, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/BanaHubDataContext/KHUYENMAI" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50d0fb9f-5235-4575-92f1-fe71f5aed64f" absoluteBounds="0.76500000000000012, 3.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 2.69399251302083); (1.75 : 3.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BanaHubDataContext/LOAI/LOAI_KHUYENMAI" />
+      <nodes>
+        <classShapeMoniker Id="023013e5-58c1-4581-b9e9-cef0d6b798e1" />
+        <classShapeMoniker Id="34db9c5d-7c0f-4838-bbc9-8a74ca0ed187" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="37b7e2fb-b3f5-4af7-a4cc-9589014301e7" absoluteBounds="7, 4.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BanaHubDataContext/ADMIN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cfe32fde-ed82-4924-b58e-ff3689ffe4e9" absoluteBounds="7.015, 4.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4bd46b9b-e2f8-448b-a01d-4f0208717045" absoluteBounds="0.75, 7.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BanaHubDataContext/THONGTINKH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="42ce87fc-80ca-4eae-936c-c2a6c75f31e2" absoluteBounds="0.76499999999999968, 8.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 6.95359537760417); (1.75 : 7.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BanaHubDataContext/KHACHHANG/KHACHHANG_THONGTINKH" />
+      <nodes>
+        <classShapeMoniker Id="4f363b09-6710-49a6-934a-08d4524fd568" />
+        <classShapeMoniker Id="4bd46b9b-e2f8-448b-a01d-4f0208717045" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="0870aa6c-0c98-4f52-923c-2a61d7e76162" absoluteBounds="6.25, 1.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/BanaHubDataContext/CTDH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee08cde2-26fb-40ae-8cf2-f36c660d7f95" absoluteBounds="6.265, 2.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 7.01044840494792); (6.59375 : 7.01044840494792); (6.59375 : 3.39589680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BanaHubDataContext/DONDATHANG/DONDATHANG_CTDH" />
+      <nodes>
+        <classShapeMoniker Id="461327dd-1200-47f7-8bf9-a55fad4f4e10" />
+        <classShapeMoniker Id="0870aa6c-0c98-4f52-923c-2a61d7e76162" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7866e70d-e54f-4083-978b-d3671aee5431" absoluteBounds="3.5, 1.375, 2, 2.5401025390625">
+      <DataClassMoniker Name="/BanaHubDataContext/SANPHAM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe8cddf7-d2a3-4ecd-be8d-e2a7b5936831" absoluteBounds="3.515, 1.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.5 : 3.64505126953125); (2.75 : 3.64505126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BanaHubDataContext/SANPHAM/SANPHAM_KHUYENMAI" />
+      <nodes>
+        <classShapeMoniker Id="7866e70d-e54f-4083-978b-d3671aee5431" />
+        <classShapeMoniker Id="34db9c5d-7c0f-4838-bbc9-8a74ca0ed187" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.63869466145833); (6.25 : 2.63869466145833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BanaHubDataContext/SANPHAM/SANPHAM_CTDH" />
+      <nodes>
+        <classShapeMoniker Id="7866e70d-e54f-4083-978b-d3671aee5431" />
+        <classShapeMoniker Id="0870aa6c-0c98-4f52-923c-2a61d7e76162" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.09699625651042); (3.5 : 2.09699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BanaHubDataContext/LOAI/LOAI_SANPHAM" />
+      <nodes>
+        <classShapeMoniker Id="023013e5-58c1-4581-b9e9-cef0d6b798e1" />
+        <classShapeMoniker Id="7866e70d-e54f-4083-978b-d3671aee5431" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="053be77e-11e7-43a6-88f7-10268572c078" absoluteBounds="3.5, 4.125, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/BanaHubDataContext/MOREIMAGE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1553c1f9-d9e1-4c00-9164-5b2064ab8ff2" absoluteBounds="3.5149999999999997, 4.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.5 : 3.9151025390625); (4.5 : 4.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BanaHubDataContext/SANPHAM/SANPHAM_MOREIMAGE" />
+      <nodes>
+        <classShapeMoniker Id="7866e70d-e54f-4083-978b-d3671aee5431" />
+        <classShapeMoniker Id="053be77e-11e7-43a6-88f7-10268572c078" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

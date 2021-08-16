@@ -1,0 +1,97 @@
+﻿@model PagedList.PagedList<BanaHubWeb.Models.Order>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Areas/Admin/Views/Shared/_BanaHubAdminLayout.cshtml";
+}
+
+
+<div id="layoutSidenav_content">
+    <div class="container-fluid container-center" style="margin-top: 2rem;">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="sub-container">
+                    <h2 class="text-center">THÔNG TIN ĐƠN HÀNG</h2>
+                    <div class="d-flex  justify-content-between" style="padding-right:1rem; margin-bottom:1rem;">
+
+                        @using (Html.BeginForm())
+                        {
+                            <div class="d-flex">
+                                <p style="margin:5px 5px 0 0">Hiển thị hóa đơn từ</p>
+                                <input class="form-control" type="date" name="fromDate" value="@ViewBag.Date" style="width:200px" />
+                                <input class="btn btn-dark" type="submit" name="name" value="Lọc" style="width:90px" />
+                            </div>
+                        }
+                        @using (Html.BeginForm("Order", "SanPham"))
+                        {
+                            <div class="d-flex">
+                                <input class="form-control mr-sm-2" type="number" name="madh" value="@ViewBag.Ma" style="width:200px">
+                                <button class="btn btn-dark" type="submit">Search</button>
+                            </div>
+                        }
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Mã đơn hàng
+                            </th>
+                            <th>
+                                Mã khách hàng
+                            </th>
+                            <th>
+                                Ngày đặt hàng
+                            </th>
+                            <th>
+                                Số loại sản phẩm
+                            </th>
+                            <th>
+                                Tổng số lượng
+                            </th>
+                            <th>
+                                Tổng đơn giá
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.cusID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DayOrder)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Count)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sum)
+                                </td>
+                                <td style="color:#be9329">
+                                    @Html.FormatValue(item.Price, "{0:##,##0}") đ
+                                </td>
+                                <td style="width:100px;">
+                                    <a href="@Url.Action("OrderDetail", new { id = item.ID})" class="btn btn-warning" role="button">Chi tiết</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    <p>Total Revenue: @Html.FormatValue(ViewBag.DoanhThu, "{0:##,##0}") đ</p>
+                    
+                    <a class="btn btn-outline-warning" href="@Url.Action("Order")">Hiện tất cả đơn hàng</a>
+                    <div class="menuTrang">
+                        @Html.PagedListPager(Model, page => Url.Action("Order", new { page = page }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

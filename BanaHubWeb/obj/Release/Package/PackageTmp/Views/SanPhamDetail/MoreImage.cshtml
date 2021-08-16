@@ -1,0 +1,21 @@
+﻿@model IEnumerable<BanaHubWeb.Models.MOREIMAGE>
+
+
+@foreach (var item in Model)
+{
+    <div class="slider-for">
+        <div class="product1"><img src="~/Images/@item.HinhChinh" alt=""></div>
+        <div class="product1"><img src="~/Images/@item.Hinh2" alt=""></div>
+        <div class="product1"><img src="~/Images/@item.Hinh3" alt=""></div>
+        <div class="product1"><img src="~/Images/@item.Hinh4" alt=""></div>
+    </div>
+
+    <div class="slider-nav">
+        <div class="product2"><img style="width:50px;height:auto" src="~/Images/@item.HinhChinh" alt=""></div>
+        <div class="product2"><img style="width:50px;height:auto" src="~/Images/@item.Hinh2" alt=""></div>
+        <div class="product2"><img style="width:50px;height:auto" src="~/Images/@item.Hinh3" alt=""></div>
+        <div class="product2"><img style="width:50px;height:auto" src="~/Images/@item.Hinh4" alt=""></div>
+    </div>
+}
+
+

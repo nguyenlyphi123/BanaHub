@@ -1,0 +1,122 @@
+﻿@using BanaHubWeb.Models
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_BanaHubMainLayout.cshtml";
+}
+
+
+<div class="container-fluid container-center" style="margin-top: 3rem;">
+    <div class="sub-container" style="width: 80%;">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr style="border-bottom: 2px solid rgba(201, 201, 201, .6);">
+                            <th class="text-uppercase table-context">sản phẩm</th>
+                            <th class="text-uppercase table-context">giá</th>
+                            <th class="text-uppercase table-context">số lượng</th>
+                            <th class="text-uppercase table-context">tổng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr style="border-bottom: 1px solid rgba(201, 201, 201, .6);">
+                                <th>
+                                    <div class="d-flex">
+                                        <a class="plus d-flex align-items-center" href="@Url.Action("XoaKhoiGioHang", "GioHang", new { masp = item.iMaSP})" style="margin-right:5px"><i class="fas fa-trash-alt"></i></a>
+                                        <img src="~/Images/@item.sAnhBia" alt="" style="width:90px; height:90px">
+                                        <div class="d-flex align-items-center">
+                                            <p style="font-size: 13px; font-weight: 600;">@item.sTenSP</p>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="d-flex align-items-center" style="padding: 1.8rem 0; color: #be9329; font-weight: 600;">
+                                        @string.Format("{0:##,##0,0}", item.dDonGia) đ
+                                    </div>
+                                </th>
+                                @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { masp = item.iMaSP }))
+                                {
+                                    <th>
+                                        <div class="d-flex justify-content-center" style="padding: 1.8rem 0;">
+                                            <input style="width:40px; height:30px" type="number" min="1" name="iSoLuong" value="@item.iSoLuong" required />
+                                            <button class="plus" style="margin-left:5px; padding-top:2px" type="submit"><i class="fas fa-check-circle"></i></button>
+                                        </div>
+                                    </th>
+                                }
+
+                                <th>
+                                    <div class="d-flex align-items-center" style="padding: 1.8rem 0; color: #be9329; font-weight: 600;">
+                                        @string.Format("{0:##,##0,0}", item.dThanhTien) đ
+                                    </div>
+                                </th>
+                            </tr>
+                        }
+                        <tr>
+                            <td><a class="text-uppercase btn btn-outline-warning btn-block" href="@Url.Action("SanPham", "BanaHub")"><i class="fas fa-arrow-left" style="margin-right:10px"></i>tiếp tục xem sản phẩm</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-lg-4 col-md-12" style="padding-left: 15px; border-left: 1px solid rgba(201, 201, 201, .2);">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr style="border-bottom: 2px solid rgba(201, 201, 201, .6);"><th class="text-uppercase table-context">tổng số lượng</th></tr>
+                    </thead>
+                </table>
+                <table class="table" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <div class="d-flex justify-content-between" style="border-bottom: 1px solid rgb(201, 201, 201);">
+                                <p>Tổng phụ</p>
+                                <p style="color: #be9329; font-weight: 600;">@string.Format("{0:##,##0,0}", @ViewBag.TongTien) đ</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="d-flex justify-content-between align-items-center" style="border-bottom: 1px solid rgb(201, 201, 201);">
+                                <p>Giao hàng</p>
+                                <p class="text-right" style="font-size: .9em;">Giao hàng miễn phí<br>Giá sẽ được cập nhập trong quá trình thanh toán<br>Tính phí giao hàng</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="d-flex justify-content-between" style="border-bottom: 1px solid rgb(201, 201, 201); padding-top: 15px;">
+                                <p>Tổng</p>
+                                <p style="color: #be9329; font-weight: 600;">@string.Format("{0:##,##0,0}", @ViewBag.TongTien) đ</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="text-center" style="padding-top: 1.5rem;">
+                                <a class="text-uppercase btn bg-danger btn-block" href="@Url.Action("DatHang", "GioHang")" style="color: #fff;">Tiến hành thanh toán</a>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="text-left" style="padding-top: 1.5rem;">
+                                <p><i class="fas fa-tags" style="margin-right: 10px;"></i>Phiếu ưu đãi</p>
+                            </div>
+                        </tr>
+
+                        @using (Html.BeginForm())
+                        {
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" name="discount" type="text" value="@ViewBag.discount" placeholder="Mã ưu đãi">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="text-center">
+                                    <input type="submit" value="Áp dụng" class="text-uppercase btn btn-outline-secondary btn-block" />
+                                    @*<a class="text-uppercase btn btn-outline-secondary btn-block" href="">Áp dụng</a>*@
+                                </div>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

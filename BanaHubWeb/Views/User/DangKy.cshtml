@@ -1,0 +1,62 @@
+﻿@model BanaHubWeb.Models.KHACHHANG
+
+@{
+    Layout = null;
+}
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>BanaHub</title>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Style -->
+    <link href="~/Content/DangKy.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section class="w3l-signup">
+        <div class="overlay">
+            <div class="wrapper">
+                <div class="logo">
+                    <a class="brand-logo" href="index.html">BanaHub signup</a>
+                </div>
+                <div class="form-section">
+                    <h3>Sign up</h3>
+                    <form action="#" method="post" class="signin-form">
+                        <div class="form-input">
+                            <input type="text" name="TenKH" placeholder="Username" required autofocus>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" name="TenDN" placeholder="Email"> @ViewBag.ThongBao
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="MatKhau" placeholder="Password" required> @ViewBag.Err
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="NhapLaiMatKhau" placeholder="Nhập lại Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary theme-button mt-4">Đăng ký</button>
+                    </form><p class="signup">Already a customer? <a href="@Url.Action("DangNhap", "User")" class="signuplink">Login now</a></p>
+                </div>
+            </div>
+        </div>
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+    </section>
+
+    <!-- Signup form -->
+    <!-- /Signup form -->
+</body>
+
+</html>
